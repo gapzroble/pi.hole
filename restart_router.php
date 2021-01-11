@@ -1,12 +1,19 @@
 #!/usr/bin/php
 <?php
 echo 'Login..', PHP_EOL;
-login();
+echo 'Login..', PHP_EOL;
+if (!login()) {
+  exit(2);
+}
 
 echo 'Restart..', PHP_EOL;
-restart();
+if (!restart()) {
+  exit(2);
+}
 echo 'Progress..', PHP_EOL;
-progress();
+if (!progress()) {
+  exit(2);
+}
 
 echo 'Logout..', PHP_EOL;
 logout();
