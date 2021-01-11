@@ -14,7 +14,9 @@ ping -q -w 1 -c 1 $DEFAULT_GW > /dev/null
 
 if [ $? -eq 0 ]; then
   echo $NOW: Internet ok
-  tail -n 1 $LOG_FILE | grep -q ok || echo $NOW: Internet ok >> $LOG_FILE
+  if [ -f "$LOG_FILE" ]; then
+    tail -n 1 $LOG_FILE | grep -q ok || echo $NOW: Internet ok >> $LOG_FILE
+  fi
 
 elif [ $? -eq 1 ]; then
   echo $NOW: Internet down
